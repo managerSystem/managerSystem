@@ -5,7 +5,7 @@
 #include <QDebug>
 
 Login::Login(QWidget * parent) : QWidget(parent), showname(new QLabel(this)), showpass(new QLabel(this)),
-    username(new QLineEdit("140200321",this)), password(new QLineEdit("123456",this)), log(new QPushButton(this))
+    username(new QLineEdit("admin",this)), password(new QLineEdit("admin",this)), log(new QPushButton(this))
 {
     setWindowModality(Qt::ApplicationModal);
 
@@ -37,7 +37,7 @@ void Login::check()
         emit login_success(username->text(), password->text(), User);
     else
     {
-        query.prepare("select * from 管理员 where 用户名=? and 密码=?");
+        query.prepare("select * from 管理员 where 帐号=? and 密码=?");
         query.addBindValue(username->text());
         query.addBindValue(password->text());
         query.exec();

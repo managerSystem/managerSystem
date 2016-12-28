@@ -15,12 +15,12 @@
 #include <QSqlQuery>
 
 enum Ope_aim {
-    RepairRecord, RepairHistory, ReceiveRecord, ReceiveHistory,
-    LateRecord, LeaveRecord, LeaveHistory, UserInfor
+    RepairRecord, RepairHistory, ReceiveRecord,
+    ReceiveHistory, LateRecord, LeaveRecord, LeaveHistory, UserInfor, DormInfor
 };
 
-const QString name[8] = {
-    "维修", "维修记录", "信件", "收信记录", "晚归", "离校", "离校记录", "学生"
+const QString name[9] = {
+    "维修", "维修记录", "信件", "收信记录", "晚归", "离校", "离校记录", "学生", "宿舍"
 };
 
 class Widget : public QWidget
@@ -40,6 +40,7 @@ protected slots:
     void logout_success();
     void showChanged(int index);
     void initShow(int index = -1);
+    void inputFromFile();
 
 private:
     QComboBox * choose;        //选择查询目标
@@ -57,6 +58,9 @@ private:
     QPushButton * resetButton;       //重置按钮
     QPushButton * addPerson;         //增加用户
     QPushButton * delPerson;         //删除用户
+    QPushButton * chooseFile;        //从文件导入学生信息
+    QPushButton * chooseFile2;       //从文件导入宿舍信息
+    QPushButton * addReapir;         //增加
 
     Dialog * addUser;                //输入添加的用户的信息
 
