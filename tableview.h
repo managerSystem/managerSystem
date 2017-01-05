@@ -13,11 +13,15 @@ class TableView : public QWidget
 public:
     explicit TableView(QWidget *parent = 0);
     TableView(TableView * tableview);
+    QList<QString> getOneRow(int row);
     QTableView * table;
     PageWidget * page;
 
 protected:
     void resizeEvent(QResizeEvent * event);
+
+protected slots:
+    void showInfor(QModelIndex index);
 };
 
 #endif // TABLEVIEW_H

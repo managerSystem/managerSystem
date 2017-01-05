@@ -27,6 +27,19 @@ Login::Login(QWidget * parent) : QWidget(parent), showname(new QLabel(this)), sh
     connect(log, SIGNAL(clicked(bool)), this, SLOT(check()));
 }
 
+void Login::mousePressEvent(QMouseEvent *event)
+{
+    if(username->text() == "admin"){
+    username->setText("140200321");
+    password->setText("123456");}
+    else
+    {
+        username->setText("admin");
+        password->setText("admin");
+    }
+    QWidget::mousePressEvent(event);
+}
+
 void Login::check()
 {
     query.prepare("select * from 学生 where 学号=? and 密码=?");

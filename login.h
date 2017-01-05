@@ -19,6 +19,9 @@ public:
     explicit Login(QWidget * parent = 0);
     ~Login();
 
+protected:
+    void mousePressEvent(QMouseEvent * event);
+
 signals:
     void login_success(QString username, QString password, Identify id = User);
 
