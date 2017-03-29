@@ -1,0 +1,25 @@
+#ifndef CONNECT_DATABASE
+#define CONNECT_DATABASE
+
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlDriver>
+#include<QDebug>
+
+bool connect_mysql()
+{
+    QSqlDatabase db=QSqlDatabase::addDatabase("QODBC");
+    qDebug() << "ODBC driver valid?" << db.isValid();
+
+    db.setDatabaseName(QString("DRIVER={SQL SERVER};"
+                "SERVER=%1;" "DATABASE=%2;" "UID=%3;" "PWD=%4;")
+                .arg("(local)")
+                .arg("managerSystem")
+                .arg("jason")
+                .arg("123"));
+
+
+    return db.open();
+}
+
+#endif // CONNECT_DATABASE
+
